@@ -1,0 +1,15 @@
+#!/bin/bash -x
+
+export DEBIAN_FRONTEND=noninteractive
+
+# Make app directories, pull locksmith, and set up.
+( [[ ! -d /app ]] && mkdir /app )
+( [[ ! -d /log ]] && mkdir /log )
+
+# Install the run script.
+install -m 755 -o root -g root -p /build/run.sh /run.sh
+
+# Clone fluentd-ui and install the deps.
+git clone https://github.com/pirogoeth/locksmith.git /app
+( cd /app && virtualenv . && source bin/activate && \
+  pip install -r requirements.txt )

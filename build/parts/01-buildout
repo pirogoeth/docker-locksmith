@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+export DEBIAN_FRONTEND=noninteractive
+
+# Install build deps
+apt-get install -y python2.7 python2.7-dev libpython2.7-dev python-pip python-virtualenv python-bcrypt pwgen git
+apt-get install -y mariadb-common mariadb-client libmariadbclient-dev
+apt-get install -y libssl-dev libssl1.0.0 libcrypto++-dev libcrypto++9
